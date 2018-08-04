@@ -1,21 +1,38 @@
 /*!*********************************************************************************************************************
 @file user_app1.c                                                                
-@brief User's tasks / applications are written here.  This description
-should be replaced by something specific to the task.
+@brief nRF interface application.
 
-----------------------------------------------------------------------------------------------------------------------
-To start a new task using this user_app1 as a template:
- 1. Copy both user_app1.c and user_app1.h to the Application directory
- 2. Rename the files yournewtaskname.c and yournewtaskname.h
- 3. Add yournewtaskname.c and yournewtaskname.h to the Application Include and Source groups in the IAR project
- 4. Use ctrl-h (make sure "Match Case" is checked) to find and replace all instances of "user_app1" with "yournewtaskname"
- 5. Use ctrl-h to find and replace all instances of "UserApp1" with "YourNewTaskName"
- 6. Use ctrl-h to find and replace all instances of "USER_APP1" with "YOUR_NEW_TASK_NAME"
- 7. Add a call to YourNewTaskNameInitialize() in the init section of main
- 8. Add a call to YourNewTaskNameRunActiveState() in the Super Loop section of main
- 9. Update yournewtaskname.h per the instructions at the top of yournewtaskname.h
-10. Delete this text (between the dashed lines) and update the Description below to describe your task
-----------------------------------------------------------------------------------------------------------------------
+Provides a communication link between the SAM3U2 and nRF51422 processors.
+The communication uses a SPI slave with flow control on the SAM3U2.
+A simple protocol will be used for the messages:
+
+[START_BYTE, LENGTH, COMMAND, DATA0, …, DATAn]
+where,
+START_BYTE = 0x5A
+LENGTH = 1 + the number of data bytes
+
+Messages will always be complete when transmitted or received.
+The slave will initialize with SRDY asserted so it is ready for a message.
+The master shall not assert CS if SRDY is not asserted.
+The master will assert CS when it is clocking a message.
+The slave shall deassert SRDY at the start of a message transfer.
+The slave shall not assert MRDY if a message is being clocked.
+
+
+Reserved Commands nRF51422 to SAM3U2 (0x00 - 0x1F):  
+CMD  ARG_BYTE(s)        FUNCTION
+--------------------------------------------------------
+0x01 LED,STATE          LED number, ON(1) OFF (0)
+0x02 LCD Message1       Null-terminated string to forward to LCD line 1 (line is erased first)
+0x03 LCD Message2       Null-terminated string to forward to LCD line 2 (line is erased first)
+0x04 Debug Message      Null-terminated string to forward to DebugPrintf();
+0x05 BUZZER,FREQ        Activate BUZZER (1 or 2) at FREQ (0 for off)
+
+
+Reserved Commands SAM3U2 to nRF51422 (0x20 - 0x3F):  
+CMD  ARG_BYTE(s)           FUNCTION
+--------------------------------------------------------
+0x21 BUTTON_PRESSED        BUTTON number (works only with WasButtonPressed();
 
 ------------------------------------------------------------------------------------------------------------------------
 GLOBALS

@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=1292198461
+Checksum=823540658
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -24,6 +24,11 @@ CStepIntDis=_ 0
 TraceBufferSize=0x00010000
 TraceStallIfFIFOFull=0x00000000
 TracePortSize=0x00000000
+[array_types]
+Fmt0=u8[128]	4	0
+[watch_formats]
+Fmt0={W}1:G_u32Ssp2ApplicationFlags	4	0
+Fmt1={W}1:nrfInterface_u8TxBytes	3	0
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
