@@ -67,6 +67,7 @@ Includes
 #include "main.h"
 #include "typedefs.h"
 #include "utilities.h"
+#include "spi_master_eie.h"
 
 
 /* Driver header files */

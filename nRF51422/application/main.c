@@ -81,6 +81,7 @@ void main(void)
 
   
   /* Application initialization */
+  SpiMasterInitialize();
   AntttInitialize();
   
   /* Exit initialization */

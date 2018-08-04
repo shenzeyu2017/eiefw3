@@ -193,10 +193,13 @@
         <name>$PROJ_DIR$\..\bsp\interrupts.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\bsp\leds_eief1_nrf51.h</name>
+        <name>$PROJ_DIR$\..\bsp\leds_eieF1_nRF51.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\bsp\soc_integration.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\..\..\..\Desktop\nRF51422\bsp\spi_master_eie.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\bsp\utilities.h</name>
@@ -220,10 +223,13 @@
         <name>$PROJ_DIR$\..\bsp\interrupts.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\bsp\leds_eief1_nrf51.c</name>
+        <name>$PROJ_DIR$\..\bsp\leds_eief1_nRF51.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\bsp\soc_integration.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\..\..\..\..\Desktop\nRF51422\bsp\spi_master_eie.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\bsp\utilities.c</name>
@@ -334,7 +340,7 @@
     <group>
       <name>Include</name>
       <file>
-        <name>$PROJ_DIR$\..\application\anttt.h</name>
+        <name>$PROJ_DIR$\..\..\..\..\..\Desktop\nRF51422\application\anttt.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\application\bleperipheral_engenuics.h</name>
@@ -349,7 +355,7 @@
     <group>
       <name>Source</name>
       <file>
-        <name>$PROJ_DIR$\..\application\anttt.c</name>
+        <name>$PROJ_DIR$\..\..\..\..\..\Desktop\nRF51422\application\anttt.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\application\bleperipheral_engenuics.c</name>

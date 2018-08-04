@@ -57,10 +57,11 @@ Promises:
 bool ClockSetup(void)
 {
   u32 u32Result = NRF_SUCCESS;
-  u32 u32Status = 0;
   u32 u32ClockStartTimeout = OSC_STARTUP_TIMOUT;
   
 #ifdef SOFTDEVICE_ENABLED  
+  u32 u32Status = 0;
+
   /* Ensure the 16MHz Crystal is running */
   u32Result |= sd_clock_hfclk_is_running(&u32Status);
   if(!u32Status)
@@ -132,11 +133,13 @@ void GpioSetup(void)
   NRF_GPIO->PIN_CNF[P0_15_INDEX] = P0_15_NRF_POMI_CNF;
   NRF_GPIO->PIN_CNF[P0_14_INDEX] = P0_14_NRF_PIMO_CNF;
 
+#if 0 /* Leave the SPI pins unconfigured for now */
   NRF_GPIO->PIN_CNF[P0_13_INDEX] = P0_13_ANT_USPI2_MOSI_CNF;
   NRF_GPIO->PIN_CNF[P0_12_INDEX] = P0_12_ANT_USPI2_MISO_CNF;
   NRF_GPIO->PIN_CNF[P0_11_INDEX] = P0_11_ANT_USPI2_SCK_CNF;
-  NRF_GPIO->PIN_CNF[P0_10_INDEX] = P0_10_ANT_SEN_CNF;
-    
+  NRF_GPIO->PIN_CNF[P0_10_INDEX] = P0_10_ANT_USPI2_CS_CNF;
+#endif
+  
 } /* end GpioSetup() */
 
 

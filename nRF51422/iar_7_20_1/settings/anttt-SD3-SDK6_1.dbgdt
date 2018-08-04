@@ -70,7 +70,7 @@
       <WATCH_1>
         <expressions>
           
-        <item>G_u32SystemTime1ms</item><item>G_u32SystemTime1s</item><item></item></expressions>
+        <item>G_u32SystemTime1ms</item><item>G_u32SystemTime1s</item><item/></expressions>
         <col-names>
           
           
