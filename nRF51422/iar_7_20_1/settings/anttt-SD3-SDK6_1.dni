@@ -20,7 +20,7 @@ Stop=1
 Freq=10000000
 MultiCoreRunAll=1
 [DebugChecksum]
-Checksum=-1998413541
+Checksum=-896398773
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -52,6 +52,8 @@ ITMportsEnable=0
 ITMportsTermIO=0
 ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
+[array_types]
+Fmt0=u8[128]	4	0
 [SWOTraceWindow]
 PcSampling=0
 InterruptLogs=0

@@ -157,7 +157,26 @@ State Machine Function Definitions
 /* What does this state do? */
 static void UserApp1SM_Idle(void)
 {
+  static u8 au8DataFromNrf[128] = {0};
+  static u8 au8LcdData[2] = {0};
+  static u8 u8nrfCheck = 0;
+  static u8 au8DataToNrf[3] = {0x5A,1,0x90};
+  u8 *pu8DataToNrf = &au8DataToNrf[2];
+  
+  u8nrfCheck = nrfNewMessageCheck();
+  
+  //如果得到新数据，进行处理
+  if (u8nrfCheck != NRF_CMD_EMPTY)
+  {
+    nrfGetAppMessage(au8DataFromNrf);//获得数据
     
+    au8LcdData[0] = (au8DataFromNrf[2]/16) + '0';
+    au8LcdData[1] = (au8DataFromNrf[2]%16) + '0';
+    
+    LCDMessage(LINE1_START_ADDR,au8LcdData);
+    nrfQueueMessage(au8DataToNrf);
+    *pu8DataToNrf++;
+  }
 } /* end UserApp1SM_Idle() */
      
 

@@ -14,7 +14,6 @@ All Global variable names shall start with "G_"
 /* New variables */
 volatile u32 G_u32BPEngenuicsFlags;                       /* Global state flags */
 
-
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* Existing variables (defined in other files -- should all contain the "extern" keyword) */
 extern volatile u32 G_u32SystemFlags;                  /* From main.c */
@@ -334,7 +333,16 @@ Promises:
 static void CallbackBleperipheralEngenuicsDataRx(u8* u8Data_, u8 u8Length_)
 {
   // Forward handling to ANTTT module.
+  static u8 au8DataSendToSAM[128] = {0x5A,0,};
+  au8DataSendToSAM[1] = u8Length_;
   
+  for (u8 i=2;i<u8Length_+2;i++)
+  {
+    au8DataSendToSAM[i] = *u8Data_;
+    u8Data_++;
+  }
+  
+  SpiMasterSend(au8DataSendToSAM,u8Length_ + NRF_OVERHEAD_BYTES);
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
