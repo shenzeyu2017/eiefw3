@@ -38,6 +38,15 @@ Function Declarations
 void UserApp1Initialize(void);
 void UserApp1RunActiveState(void);
 
+void Show(void);
+void WriteToShowData(u8 u8WordLocation,u8 *u8Data);
+void Delay(u8 Delaytime);
+void MBI_data(u8 Line);
+void  LineDisplay(u8 Line_);
+void LeftOneBit(void);
+void GetFontData(u16 Hanzi);
+u32 GetAddress(u16 Hanzi);
+void  WriteToHanzi(void);
 
 /*------------------------------------------------------------------------------------------------------------------*/
 /*! @privatesection */                                                                                            
