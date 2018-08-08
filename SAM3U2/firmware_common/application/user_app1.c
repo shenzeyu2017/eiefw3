@@ -255,7 +255,6 @@ static void UserApp1SM_Idle(void)
 void  WriteToHanzi(void)
 {
   static u8 au8DataFromNrf[128] = {0};
-  static u8 u8NumberOfData = 0;
   u8SequenceOfWord = 0;
   u8 u8HanziArraySize = sizeof(u16Hanzi);
   u8 u8Data = 0;
@@ -264,7 +263,7 @@ void  WriteToHanzi(void)
   u8 u8ArrayBit = 0;
   
   nrfGetAppMessage(au8DataFromNrf);//获得数据
-  u8NumberOfData = au8DataFromNrf[1];
+  u8NumberOfWord = au8DataFromNrf[1];
   
   //清除u16Hanzi数组的内容
   for(u8 i=0;i<u8HanziArraySize;i++)
@@ -272,7 +271,7 @@ void  WriteToHanzi(void)
     u16Hanzi[i] = 0;
   }
   
-  for (u8 j=2;j<u8NumberOfData+2;j++)
+  for (u8 j=2;j<u8NumberOfWord+2;j++)
   {    
     u8Data = au8DataFromNrf[j];
     u8Times++;
