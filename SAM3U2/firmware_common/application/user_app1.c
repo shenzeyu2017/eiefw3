@@ -184,6 +184,7 @@ State Machine Function Definitions
 /* What does this state do? */
 static void UserApp1SM_Idle(void)
 {
+  u8 au8LedCommand[3] = {NRF_SYNC_BYTE,1,NRF_CMD_LED};
   static u8 NumberOfBlank = 0;
   static u8 u8TimeCounter = 0;
   static u8 u8MoveTimes = 0;
@@ -246,6 +247,11 @@ static void UserApp1SM_Idle(void)
    
   Show(); //Show the data in the u8ShowData[]
   
+  if (WasButtonPressed(BUTTON0))
+  {
+    ButtonAcknowledge(BUTTON0);
+    nrfQueueMessage(au8LedCommand);
+  }
 
  
   
